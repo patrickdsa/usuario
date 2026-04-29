@@ -63,23 +63,23 @@ public UsuarioDTO paraUsuarioDTO(Usuario usuarioDTO) {
 }
 
 
-public List<EnderecoDTO> paraListaEnderecoDTO(List<Endereco> enderecoDTOS) {
-    return enderecoDTOS.stream().map(this::paraEnderecoDTO).toList();
+public List<EnderecoDTO> paraListaEnderecoDTO(List<Endereco> enderecos) {
+    return enderecos.stream().map(this::paraEnderecoDTO).toList();
 }
 
-public EnderecoDTO paraEnderecoDTO(Endereco enderecoDTO) {
+public EnderecoDTO paraEnderecoDTO(Endereco endereco) {
     return EnderecoDTO.builder()
-            .rua(enderecoDTO.getRua())
-            .complemento(enderecoDTO.getComplemento())
-            .numero(enderecoDTO.getNumero())
-            .estado(enderecoDTO.getEstado())
-            .cidade(enderecoDTO.getCidade())
-            .cep(enderecoDTO.getCep())
+            .rua(endereco.getRua())
+            .complemento(endereco.getComplemento())
+            .numero(endereco.getNumero())
+            .estado(endereco.getEstado())
+            .cidade(endereco.getCidade())
+            .cep(endereco.getCep())
             .build();
 }
 
-public List<TelefoneDTO> paraListaTelefoneDTO(List<Telefone> telefone){
-    return telefone.stream().map(this::paraTelefoneDTO).toList();
+public List<TelefoneDTO> paraListaTelefoneDTO(List<Telefone> telefones){
+    return telefones.stream().map(this::paraTelefoneDTO).toList();
 }
 
 public TelefoneDTO paraTelefoneDTO (Telefone telefone){
