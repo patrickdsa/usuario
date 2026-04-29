@@ -88,6 +88,20 @@ public TelefoneDTO paraTelefoneDTO (Telefone telefone){
             .numero(telefone.getNumero())
             .build();
 }
+
+public Usuario updateUsuario(UsuarioDTO usuarioDTO, Usuario usuarioEntity){
+        return Usuario.builder()
+                .id(usuarioEntity.getId())
+                .nome(usuarioDTO.getNome() != null ? usuarioDTO.getNome() : usuarioEntity.getNome())
+                .email(usuarioDTO.getEmail() != null ? usuarioDTO.getEmail() : usuarioEntity.getEmail())
+                .senha(usuarioDTO.getSenha() != null ? usuarioDTO.getSenha() : usuarioEntity.getSenha())
+                .enderecos(usuarioEntity.getEnderecos())
+                .telefones(usuarioEntity.getTelefones())
+                .build();
+
+}
+
+
 }
 
 
