@@ -4,8 +4,8 @@ import com.javanauta.usuario.business.converter.UsuarioConverter;
 import com.javanauta.usuario.business.dto.EnderecoDTO;
 import com.javanauta.usuario.business.dto.TelefoneDTO;
 import com.javanauta.usuario.business.dto.UsuarioDTO;
-import com.javanauta.usuario.infrastructure.Exceptions.ConflictException;
-import com.javanauta.usuario.infrastructure.Exceptions.ResourceNotFoundException;
+import com.javanauta.usuario.infrastructure.exceptions.ConflictException;
+import com.javanauta.usuario.infrastructure.exceptions.ResourceNotFoundException;
 import com.javanauta.usuario.infrastructure.entity.Endereco;
 import com.javanauta.usuario.infrastructure.entity.Telefone;
 import com.javanauta.usuario.infrastructure.entity.Usuario;
@@ -16,8 +16,6 @@ import com.javanauta.usuario.infrastructure.security.JwtUtil;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
-
-import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -50,9 +48,8 @@ public class UsuarioService {
 
 
     public Usuario buscaUsuarioPorEmail(String email) {
-        return usuarioRepository.findByEmail(email).orElseThrow(
-                () -> new ResourceNotFoundException("Email não encontrado"
-                        + email));
+        return usuarioRepository.findByEmail(email).orElseThrow
+                (() -> new ResourceNotFoundException("Email não encontrado" + email));
     }
 
     public void deletaUsuarioPorEmail(String email) {
