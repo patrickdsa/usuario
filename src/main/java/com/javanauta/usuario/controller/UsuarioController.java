@@ -48,12 +48,9 @@ public class UsuarioController {
     @Operation(summary = "Login de Usuário", description = "Faz o Login de Usuário")
     @ApiResponse(responseCode = "200", description = "login efetuado com sucesso")
     @ApiResponse(responseCode = "500", description = "Erro de servidor")
-    public String login (@RequestBody UsuarioDTO usuarioDTO){
-        Authentication authentication = authenticationManager.authenticate(
-                new UsernamePasswordAuthenticationToken(usuarioDTO.getEmail(), usuarioDTO.getSenha())
-        );
+    public ResponseEntity<String> login (@RequestBody UsuarioDTO usuarioDTO){
+        return ResponseEntity.ok(usuarioService.autenticarUsuario(usuarioDTO));
 
-        return "Bearer " + jwtUtil.generateToken(authentication.getName());
 
     }
 
